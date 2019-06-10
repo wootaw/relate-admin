@@ -1,0 +1,124 @@
+@import "element-ui/packages/theme-chalk/src/common/var.scss";
+@import './variables.scss';
+@import './mixin.scss';
+
+// .m-15 {
+//   margin: 15px;
+// }
+.mb-15 {
+  margin-bottom: 15px;
+}
+.p-10 {
+  padding: 10px;
+}
+// .pl-15 {
+//   padding-left: 15px;
+// }
+// .pr-15 {
+//   padding-right: 15px;
+// }
+// .pos-r {
+//   position: relative;
+// }
+// .app-main-wrapper {
+//   position: relative;
+//   padding: 15px;
+// }
+.fr {
+  float: right;
+}
+.ta-r {
+  text-align: right;
+}
+.handle {
+  cursor: move;
+}
+.app-dialog {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: $grey_color_lter;
+  z-index: 10;
+}
+.dialog-enter-active, .dialog-leave-active {
+  transition: 0.3s;
+}
+.dialog-enter, .dialog-leave-to {
+  transform: scale(0);
+}
+.app-dialog-buttons {
+  height: 50px;
+  background-color: $grey_color;
+}
+.app-dialog-wrapper {
+  position: absolute;
+  top: 50px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 15px;
+  overflow: auto;
+  background-color: white;
+}
+.el-form-item__content {
+  text-align: left;
+}
+.app-buttons-plain {
+  .el-button {
+    padding: 7px;
+  }
+  @each $type in (default, primary, success, warning, danger, info) {
+    .el-button--#{$type} {
+      background: $--button-default-background-color;
+      border-width: 1px;
+      border-style: solid;
+      border-color: $grey_color;
+      color: $blue_color_dker;
+    }
+    &.el-button-group .el-button--#{$type}:not(:first-child):not(:last-child) {
+      border-left-color: $grey_color;
+      border-right-color: $grey_color;
+    }
+    &.el-button-group .el-button--#{$type}:last-child {
+      border-left-color: $grey_color;
+    }
+  }
+  .el-button--primary {
+    color: $--color-primary;
+  }
+  .el-button--success {
+    color: $--color-success;
+    &:hover {
+      color: $--color-success;
+      border-color: $--color-success!important;
+      background-color: $--color-success-light;
+    }
+  }
+  .el-button--warning {
+    color: $--color-warning;
+    &:hover {
+      color: $--color-warning;
+      border-color: $--color-warning!important;
+      background-color: $--color-warning-light;
+    }
+  }
+  .el-button--danger {
+    color: $--color-danger;
+    &:hover {
+      color: $--color-danger;
+      border-color: $--color-danger!important;
+      background-color: $--color-danger-light;
+    }
+  }
+  .el-button--info {
+    color: $--color-info;
+    &:hover {
+      color: $--color-info;
+      border-color: $--color-info!important;
+      background-color: $--color-info-light;
+    }
+    
+  }
+}
