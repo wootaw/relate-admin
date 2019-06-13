@@ -38,6 +38,10 @@ const router = new Router({
       name: 'accounts',
       meta: { title: '媒体账号' }
     }, {
+      path: 'finance',
+      name: 'finance',
+      meta: { title: '财务' }
+    }, {
       path: 'settings',
       name: 'settings',
       component: Workspace,
@@ -46,12 +50,17 @@ const router = new Router({
         path: 'departments',
         name: 'departments',
         meta: { title: '部门' },
-        component: () => import('@/views/settings/Departments/index.vue'),
+        component: () => import('@/views/settings/departments/index.vue'),
         children: [{
           path: 'add',
           name: 'departments-add',
           meta: { title: '新增' },
-          component: () => import('@/views/settings/Departments/Add.vue')
+          component: () => import('@/views/settings/departments/form.vue')
+        }, {
+          path: ':id/edit',
+          name: 'departments-edit',
+          meta: { title: '编辑' },
+          component: () => import('@/views/settings/departments/form.vue')
         }]
       }, {
         path: 'roles',
