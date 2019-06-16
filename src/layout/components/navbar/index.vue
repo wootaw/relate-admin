@@ -17,6 +17,7 @@
 </template>
 
 <script>
+import defaultSettings from '@/settings'
 
 export default {
   data () {
@@ -25,19 +26,7 @@ export default {
         title: '首页',
         name: 'dashboard',
         icon: 'el-icon-odometer'
-      }, {
-        title: '客户',
-        name: 'customers',
-        icon: 'el-icon-user'
-      }, {
-        title: '媒体账号',
-        name: 'accounts',
-        icon: 'el-icon-key'
-      }, {
-        title: '设置',
-        name: 'settings',
-        icon: 'el-icon-setting'
-      }]
+      }].concat(defaultSettings.mainItems)
     }
   },
 

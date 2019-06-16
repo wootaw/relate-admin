@@ -1,6 +1,5 @@
 <template lang="pug">
   div(class="app-dialog")
-    //- sticky(class="app-dialog-buttons" :z-index="10" :sticky-top="50")
     el-row(class="app-dialog-buttons ta-r p-10")
       el-col(:span="24")
         el-button(
@@ -35,13 +34,7 @@
 </template>
 
 <script>
-import Sticky from '@/components/sticky'
-
 export default {
-  components: {
-    Sticky
-  },
-
   data() {
     return {
       functions: [

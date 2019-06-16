@@ -1,0 +1,44 @@
+{
+  "departments": [
+    { "id": 1, "name": "行政部", "functioning": "other" },
+    {
+      "id": 2, "name": "商务部", "functioning": "business", "children": [
+        { "id": 3, "name": "商务一部", "functioning": "business" },
+        { "id": 4, "name": "商务二部", "functioning": "business" },
+        { "id": 5, "name": "商务三部", "functioning": "business" }
+      ]
+    }
+  ],
+  "roles": [
+    { "id": 1, "name": "管理员", "remark": "管理员", "members": 1, "actions": [1, 5, 9, 12] },
+    { "id": 2, "name": "商务总监", "remark": "商务总监", "members": 1, "actions": [1, 2, 5] },
+    { "id": 3, "name": "运营总监", "remark": "运营总监", "members": 3, "actions": [5, 6, 9] },
+    { "id": 4, "name": "商务组员", "remark": "商务组员", "members": 30, "actions": [1] },
+    { "id": 5, "name": "运营组员", "remark": "运营组员", "members": 50, "actions": [5, 6] },
+    { "id": 6, "name": "财务", "remark": "财务", "members": 5, "actions": [9, 10, 11, 12] }
+  ],
+  "resources": [
+    { 
+      "name": "departments", "title": "部门", "group": "settings", "actions": [
+        { "id": 1, "name": "浏览" },
+        { "id": 2, "name": "创建" },
+        { "id": 3, "name": "编辑" },
+        { "id": 4, "name": "删除" }
+      ]
+    }, { 
+      "name": "roles", "title": "角色", "group": "settings", "actions": [
+        { "id": 5, "name": "浏览" },
+        { "id": 6, "name": "创建" },
+        { "id": 7, "name": "编辑" },
+        { "id": 8, "name": "删除" }
+      ]
+    }, { 
+      "name": "users", "title": "用户", "group": "settings", "actions": [
+        { "id": 9, "name": "浏览" },
+        { "id": 10, "name": "创建" },
+        { "id": 11, "name": "编辑" },
+        { "id": 12, "name": "删除" }
+      ]
+    }
+  ]
+}

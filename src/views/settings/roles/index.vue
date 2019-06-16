@@ -1,41 +1,30 @@
 <template lang="pug">
-  div(class="app-departments")
+  div(class="app-roles")
     el-row(class="mb-15 ta-r")
       el-col(:span="24")
-        router-link(:to="{ path: 'departments/add' }")
+        router-link(:to="{ path: 'roles/add' }")
           el-button(
             round
             type="primary"
             size="mini"
             icon="el-icon-plus"
-          ) 添加直属部门
+          ) 添加角色
     el-card(:body-style="{ padding: '0px' }" shadow="never")
       el-table(
         :data="rows"
         row-key="id"
-        default-expand-all
-        :tree-props="{children: 'children', hasChildren: 'hasChildren'}"
       )
         el-table-column(label="ID" type="index" prop="id")
-        el-table-column(label="排序" type="index")
-          template(slot-scope="scope")
-            i(class="el-icon-rank handle")
-        el-table-column(prop="name" label="部门名称")
+        el-table-column(prop="name" label="角色名称")
         el-table-column(label="操作" fixed="right" width="120" align="center")
           template(slot-scope="scope")
             el-button-group(class="app-buttons-plain")
-              el-tooltip(effect="dark" :open-delay="800" placement="top" content="添加子部门")
-                el-button(
-                  size="mini"
-                  icon="el-icon-plus"
-                  @click="$router.push({ name: 'departments-add', query: { parentId: scope.row.id } })"
-                )
               el-tooltip(effect="dark" :open-delay="800" placement="top" content="编辑")
                 el-button(
                   size="mini"
                   type="success"
                   icon="el-icon-edit"
-                  @click="$router.push({ name: 'departments-edit', params: { id: scope.row.id }})"
+                  @click="$router.push({ name: 'roles-edit', params: { id: scope.row.id }})"
                 )
               el-tooltip(effect="dark" :open-delay="800" placement="top" content="删除")
                 el-button(
@@ -49,8 +38,6 @@
 </template>
 
 <script>
-import Sortable from 'sortablejs'
-
 export default {
   data () {
     return {
@@ -60,21 +47,13 @@ export default {
 
   methods: {
     initTable () {
-      this.axios.get('api/departments').then((res) => {
+      this.axios.get('api/roles').then((res) => {
         this.rows = res.data
       })
     },
 
-    initSortable () {
-      let el = document.querySelectorAll('.app-departments .el-table__body-wrapper > table > tbody')[0]
-      new Sortable(el, {
-        handle: '.handle',
-        animation: 150
-      })
-    },
-
     confirmDelete (idx, row) {
-      this.$confirm(`确认删除“${row.name}”吗？`, '提示', {
+      this.$confirm(`确认删除角色“${row.name}”吗？`, '提示', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
         type: 'warning'
@@ -94,7 +73,6 @@ export default {
 
   mounted () {
     this.initTable()
-    this.initSortable()
   }
 }
 </script>

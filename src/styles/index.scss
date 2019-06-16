@@ -5,15 +5,27 @@
 // .m-15 {
 //   margin: 15px;
 // }
+.m-0 {
+  margin: 0;
+}
+.mb-5 {
+  margin-bottom: 5px;
+}
 .mb-15 {
   margin-bottom: 15px;
+}
+.mr-10 {
+  margin-right: 10px;
 }
 .p-10 {
   padding: 10px;
 }
-// .pl-15 {
-//   padding-left: 15px;
-// }
+.pr-10 {
+  padding-right: 10px;
+}
+.pl-15 {
+  padding-left: 15px;
+}
 // .pr-15 {
 //   padding-right: 15px;
 // }
@@ -29,6 +41,9 @@
 }
 .ta-r {
   text-align: right;
+}
+.txt-blue-dk {
+  color: $blue_color_dk;
 }
 .handle {
   cursor: move;

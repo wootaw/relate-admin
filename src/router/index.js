@@ -66,7 +66,18 @@ const router = new Router({
         path: 'roles',
         name: 'roles',
         meta: { title: '角色' },
-        component: () => import('@/views/customers/Signeds')
+        component: () => import('@/views/settings/roles/index.vue'),
+        children: [{
+          path: 'add',
+          name: 'roles-add',
+          meta: { title: '新增' },
+          component: () => import('@/views/settings/roles/form.vue')
+        }, {
+          path: ':id/edit',
+          name: 'roles-edit',
+          meta: { title: '编辑' },
+          component: () => import('@/views/settings/roles/form.vue')
+        }]
       }, {
         path: 'users',
         name: 'users',
