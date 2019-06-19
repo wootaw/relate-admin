@@ -1,5 +1,5 @@
 <template lang="pug">
-  div(class="app-aside-wrapper")
+  div(class="app-aside-wrapper m-15")
     h3 设置
     aside-menu(:items="items")
 </template>
@@ -17,15 +17,15 @@ export default {
   data () {
     return {
       items: [{
-        title: '部门',
-        name: 'departments',
-        icon: 'el-icon-odometer'
-      }, {
         title: '角色',
         name: 'roles',
         icon: 'el-icon-user'
       }, {
-        title: '用户',
+        title: '部门',
+        name: 'departments',
+        icon: 'el-icon-odometer'
+      }, {
+        title: '员工',
         name: 'users',
         icon: 'el-icon-key'
       }]

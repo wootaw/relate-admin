@@ -1,30 +1,59 @@
 <template lang="pug">
   el-container(class="app-workspace")
-    el-aside(class="app-aside" width="200px")
+    el-aside(class="app-aside" :width="asideWidth + dx + 'px'")
+      resizer(@move="onResizerMove" @toggle="onResizerToggle")
       component(:is="sidebar" v-if="sidebar !== null")
-    el-container
+    el-container(class="app-page")
       el-header(class="app-header" height="50px")
         header-breadcrumb
-      el-main(class="app-main")
+      el-main(:class="{ 'app-main': true, 'dialog-open': dialogOpened }")
         transition(name="fade-main" mode="out-in")
           router-view
 </template>
 
 <script>
 import sidebars from '@/components/sidebar'
+import Resizer from '@/components/resizer'
 import HeaderBreadcrumb from '../headbar/Breadcrumb'
 
 export default {
   name: 'workspace',
 
+  props: {
+    asideExpanded: {
+      type: Boolean,
+      default: true
+    }
+  },
+
   components: {
     ...sidebars,
+    Resizer,
     HeaderBreadcrumb
   },
 
   data () {
     return {
-      sidebar: null
+      sidebar: null,
+      dx: 0,
+      asideWidth: 200
+    }
+  },
+
+  computed: {
+    dialogOpened () {
+      return this.$route.matched.length >= 4
+    }
+  },
+
+  methods: {
+    onResizerMove (dx) {
+      this.dx = dx
+    },
+
+    onResizerToggle (expanded) {
+      this.dx = expanded ? 0 : -this.asideWidth
+      this.$emit('update:asideExpanded', expanded)
     }
   },
 
@@ -47,19 +76,30 @@ export default {
 }
 .app-aside {
   width: 100%;
-  padding: 15px;
   background-color: $grey_color_lt;
-  
+  position: relative;
+  overflow: visible!important;
+  z-index: 2;
+  transition: all .2s;
 }
 .app-aside-wrapper {
   h3 {
     text-align: left;
     color: $blue_color_dker;
   }
+  overflow: hidden;
+}
+.app-page {
+  // z-index: 1;
 }
 .app-main {
   background-color: $grey_color_lter;
+  // border-top: 1px solid $grey_color_lter;
   position: relative;
+  padding: 0!important;
+  &.dialog-open {
+    overflow: hidden;
+  }
 }
 
 .fade-main-leave-active, .fade-main-enter-active {

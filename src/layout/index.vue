@@ -1,7 +1,7 @@
 <template lang="pug">
   div(class="app-wrapper")
-    navbar
-    router-view
+    navbar(:aside="expanded")
+    router-view(:aside-expanded.sync="expanded")
 </template>
 
 <script>
@@ -11,6 +11,12 @@ export default {
   name: 'layout',
   components: {
     Navbar
+  },
+
+  data () {
+    return {
+      expanded: true
+    }
   }
 }
 </script>

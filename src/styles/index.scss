@@ -8,6 +8,15 @@
 .m-0 {
   margin: 0;
 }
+.m-15 {
+  margin: 15px;
+}
+.m-20 {
+  margin: 20px;
+}
+.mr-5 {
+  margin-right: 5px;
+}
 .mb-5 {
   margin-bottom: 5px;
 }
@@ -22,6 +31,14 @@
 }
 .pr-10 {
   padding-right: 10px;
+}
+.ph-15 {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.ph-20 {
+  padding-left: 20px;
+  padding-right: 20px;
 }
 .pl-15 {
   padding-left: 15px;
@@ -55,6 +72,7 @@
   left: 0;
   right: 0;
   background-color: $grey_color_lter;
+  overflow: auto;
   z-index: 10;
 }
 .dialog-enter-active, .dialog-leave-active {
@@ -65,7 +83,8 @@
 }
 .app-dialog-buttons {
   height: 50px;
-  background-color: $grey_color;
+  // background-color: $grey_color;
+  background-image: linear-gradient(120deg, $blue_color 0%, $grey_color_lt 100%);
 }
 .app-dialog-wrapper {
   position: absolute;

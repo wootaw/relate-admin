@@ -1,5 +1,5 @@
 <template lang="pug">
-  div(class="app-navbar")
+  div(:class="{ 'app-navbar': true, 'no-aside': !aside }")
     div(class="ra-logo")
     ul(class="ra-main-menu")
       router-link(tag="li" :to="{ name: item.name }" :key="item.path" v-for="item of items")
@@ -20,6 +20,13 @@
 import defaultSettings from '@/settings'
 
 export default {
+  props: {
+    aside: {
+      type: Boolean,
+      default: true
+    }
+  },
+
   data () {
     return {
       items: [{
@@ -46,6 +53,19 @@ export default {
   height: 100%;
   float: left;
   background-color: $blue_color_dk;
+  &.no-aside {
+    .active-tab {
+      &::before, &::after {
+        display: none;
+      }
+      a {
+        border-radius: 10px;
+        &::after {
+          display: none;
+        }
+      }
+    }
+  }
 }
 .ra-logo {
   height: 65px;
