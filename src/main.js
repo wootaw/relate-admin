@@ -8,7 +8,7 @@ import VueAxios from 'vue-axios'
 // import 'element-ui/lib/theme-chalk/menu.css'
 
 import {
-    // Pagination,
+    Pagination,
     Dialog,
     // Autocomplete,
     // Dropdown,
@@ -90,7 +90,7 @@ import {
 import '@/styles/index.scss'
 import '@/styles/element-ui-index.scss'
 
-// Vue.use(Pagination);
+Vue.use(Pagination);
 Vue.use(Dialog)
 // Vue.use(Autocomplete);
 // Vue.use(Dropdown);
