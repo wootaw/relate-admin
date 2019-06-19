@@ -1,15 +1,16 @@
 <template lang="pug">
   div(class="app-departments")
-    el-row(class="mb-15 ta-r")
-      el-col(:span="24")
-        router-link(:to="{ path: 'departments/add' }")
-          el-button(
-            round
-            type="primary"
-            size="mini"
-            icon="el-icon-plus"
-          ) 添加直属部门
-    el-card(:body-style="{ padding: '0px' }" shadow="never")
+    sticky(:height="28" :top="15" :fixed-at="50")
+      el-row(class="mb-15 ta-r")
+        el-col(:span="24" class="ph-20")
+          router-link(:to="{ path: 'departments/add' }")
+            el-button(
+              round
+              type="primary"
+              size="mini"
+              icon="el-icon-plus"
+            ) 添加直属部门
+    el-card(:body-style="{ padding: '0px' }" shadow="never" class="m-20")
       el-table(
         :data="rows"
         row-key="id"
@@ -33,7 +34,7 @@
               el-tooltip(effect="dark" :open-delay="800" placement="top" content="编辑")
                 el-button(
                   size="mini"
-                  type="success"
+                  type="primary"
                   icon="el-icon-edit"
                   @click="$router.push({ name: 'departments-edit', params: { id: scope.row.id }})"
                 )
@@ -50,8 +51,13 @@
 
 <script>
 import Sortable from 'sortablejs'
+import Sticky from '@/components/sticky'
 
 export default {
+  components: {
+    Sticky
+  },
+
   data () {
     return {
       rows: []
@@ -60,7 +66,7 @@ export default {
 
   methods: {
     initTable () {
-      this.axios.get('api/departments').then((res) => {
+      this.axios.get('api/departments_tree').then((res) => {
         this.rows = res.data
       })
     },
