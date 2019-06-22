@@ -6,13 +6,19 @@
     el-container(class="app-page")
       el-header(class="app-header" height="50px")
         header-breadcrumb
-      el-main(:class="{ 'app-main': true, 'dialog-open': dialogOpened }")
+      el-main(class="app-main")
         transition(name="fade-main" mode="out-in")
           router-view
+      transition(name="dialog" mode="out-in")
+        component(
+          :is="dialogName"
+          v-if="dialogName !== undefined"
+        )
 </template>
 
 <script>
 import sidebars from '@/components/sidebar'
+import dialogs from '@/views/dialogs'
 import Resizer from '@/components/resizer'
 import HeaderBreadcrumb from '../headbar/Breadcrumb'
 
@@ -28,6 +34,7 @@ export default {
 
   components: {
     ...sidebars,
+    ...dialogs,
     Resizer,
     HeaderBreadcrumb
   },
@@ -41,9 +48,13 @@ export default {
   },
 
   computed: {
-    dialogOpened () {
-      return this.$route.matched.length >= 4
+    dialogName () {
+      const m = this.$route.matched[3]
+      return m === undefined ? undefined : m.meta.pane
     }
+  },
+
+  watch: {
   },
 
   methods: {
@@ -55,6 +66,15 @@ export default {
       this.dx = expanded ? 0 : -this.asideWidth
       this.$emit('update:asideExpanded', expanded)
     }
+  },
+
+  mounted () {
+  },
+
+  activated () {
+  },
+
+  destroyed () {
   },
 
   beforeRouteEnter (to, from, next) {
@@ -91,10 +111,10 @@ export default {
 }
 .app-page {
   // z-index: 1;
+  position: relative;
 }
 .app-main {
   background-color: $grey_color_lter;
-  // border-top: 1px solid $grey_color_lter;
   position: relative;
   padding: 0!important;
   &.dialog-open {
@@ -114,5 +134,36 @@ export default {
 .fade-main-leave-to {
   opacity: 0;
   transform: translateX(-30px);
+}
+.app-dialog {
+  position: absolute;
+  top: 50px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: $grey_color_lter;
+  overflow: auto;
+  z-index: 10;
+}
+.dialog-enter-active, .dialog-leave-active {
+  transition: 0.3s;
+}
+.dialog-enter, .dialog-leave-to {
+  transform: scale(0);
+}
+.app-dialog-buttons {
+  height: 50px;
+  // background-color: $grey_color;
+  background-image: linear-gradient(120deg, $blue_color 0%, $grey_color_lt 100%);
+}
+.app-dialog-wrapper {
+  position: absolute;
+  top: 50px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 15px;
+  overflow: auto;
+  background-color: white;
 }
 </style>

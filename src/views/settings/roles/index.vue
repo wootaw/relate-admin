@@ -34,8 +34,6 @@
                   icon="el-icon-delete"
                   @click="confirmDelete(scope.$index, scope.row)"
                 )
-    transition(name="dialog")
-      router-view
 </template>
 
 <script>

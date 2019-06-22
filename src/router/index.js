@@ -54,13 +54,11 @@ const router = new Router({
         children: [{
           path: 'add',
           name: 'departments-add',
-          meta: { title: '新增' },
-          component: () => import('@/views/settings/departments/form.vue')
+          meta: { title: '新增', pane: 'department-form' },
         }, {
           path: ':id/edit',
           name: 'departments-edit',
-          meta: { title: '编辑' },
-          component: () => import('@/views/settings/departments/form.vue')
+          meta: { title: '编辑', pane: 'department-form' },
         }]
       }, {
         path: 'roles',
@@ -70,19 +68,26 @@ const router = new Router({
         children: [{
           path: 'add',
           name: 'roles-add',
-          meta: { title: '新增' },
-          component: () => import('@/views/settings/roles/form.vue')
+          meta: { title: '新增', pane: 'role-form' },
         }, {
           path: ':id/edit',
           name: 'roles-edit',
-          meta: { title: '编辑' },
-          component: () => import('@/views/settings/roles/form.vue')
+          meta: { title: '编辑', pane: 'role-form' },
         }]
       }, {
         path: 'users',
         name: 'users',
-        meta: { title: '用户' },
-        component: () => import('@/views/customers/Openeds')
+        meta: { title: '员工' },
+        component: () => import('@/views/settings/users/index.vue'),
+        children: [{
+          path: 'add',
+          name: 'users-add',
+          meta: { title: '新增', pane: 'user-form' }
+        }, {
+          path: ':id/edit',
+          name: 'users-edit',
+          meta: { title: '编辑', pane: 'user-form' },
+        }]
       }]
     }, {
       path: 'leads1',
