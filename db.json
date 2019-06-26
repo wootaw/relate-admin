@@ -1,14 +1,4 @@
 {
-  "departments": [
-    { "id": 1, "name": "行政部", "functioning": "other" },
-    {
-      "id": 2, "name": "商务部", "functioning": "business", "children": [
-        { "id": 3, "name": "商务一部", "functioning": "business" },
-        { "id": 4, "name": "商务二部", "functioning": "business" },
-        { "id": 5, "name": "商务三部", "functioning": "business" }
-      ]
-    }
-  ],
   "roles": [
     { "id": 1, "name": "管理员", "remark": "管理员", "members": 1, "actions": [1, 5, 9, 12] },
     { "id": 2, "name": "商务总监", "remark": "商务总监", "members": 1, "actions": [1, 2, 5] },
@@ -17,28 +7,96 @@
     { "id": 5, "name": "运营组员", "remark": "运营组员", "members": 50, "actions": [5, 6] },
     { "id": 6, "name": "财务", "remark": "财务", "members": 5, "actions": [9, 10, 11, 12] }
   ],
-  "resources": [
+  "resources": [{
+    "name": "departments", "title": "部门", "group": "settings", "actions": [
+      { "id": 1, "name": "浏览" },
+      { "id": 2, "name": "创建" },
+      { "id": 3, "name": "编辑" },
+      { "id": 4, "name": "删除" }
+    ]
+  }, {
+    "name": "roles", "title": "角色", "group": "settings", "actions": [
+      { "id": 5, "name": "浏览" },
+      { "id": 6, "name": "创建" },
+      { "id": 7, "name": "编辑" },
+      { "id": 8, "name": "删除" }
+    ]
+  }, {
+    "name": "users", "title": "用户", "group": "settings", "actions": [
+      { "id": 9, "name": "浏览" },
+      { "id": 10, "name": "创建" },
+      { "id": 11, "name": "编辑" },
+      { "id": 12, "name": "禁用/恢复" }
+    ]
+  }],
+  "departments_tree": [
+    { "id": 1, "name": "行政部", "functioning": "other" },
+    { "id": 14, "name": "财务部", "functioning": "finance" },
+    {
+      "id": 2, "name": "商务部", "functioning": "business", "children": [
+        { "id": 3, "name": "商务一部", "functioning": "business" },
+        { 
+          "id": 4, "name": "商务二部", "functioning": "business", "children": [
+            { "id": 6, "name": "一组", "functioning": "business" },
+            { "id": 7, "name": "二组", "functioning": "business" }
+          ]
+        },
+        { "id": 5, "name": "商务三部", "functioning": "business" }
+      ]
+    },
     { 
-      "name": "departments", "title": "部门", "group": "settings", "actions": [
-        { "id": 1, "name": "浏览" },
-        { "id": 2, "name": "创建" },
-        { "id": 3, "name": "编辑" },
-        { "id": 4, "name": "删除" }
-      ]
-    }, { 
-      "name": "roles", "title": "角色", "group": "settings", "actions": [
-        { "id": 5, "name": "浏览" },
-        { "id": 6, "name": "创建" },
-        { "id": 7, "name": "编辑" },
-        { "id": 8, "name": "删除" }
-      ]
-    }, { 
-      "name": "users", "title": "用户", "group": "settings", "actions": [
-        { "id": 9, "name": "浏览" },
-        { "id": 10, "name": "创建" },
-        { "id": 11, "name": "编辑" },
-        { "id": 12, "name": "删除" }
+      "id": 8, "name": "运营部", "functioning": "operation", "children": [
+        { 
+          "id": 9, "name": "运营一部", "functioning": "operation", "children": [
+            { "id": 10, "name": "一组", "functioning": "operation" },
+            { "id": 11, "name": "二组", "functioning": "operation" }
+          ]
+        },
+        { "id": 12, "name": "运营二部", "functioning": "operation"},
+        { "id": 13, "name": "运营三部", "functioning": "operation" }
       ]
     }
+  ],
+  "departments": [
+    { "id": 1, "name": "行政部", "functioning": "other" },
+    { "id": 14, "name": "财务部", "functioning": "finance" },
+    { "id": 2, "name": "商务部", "functioning": "business" },
+    { "id": 3, "name": "商务一部", "functioning": "business" },
+    { "id": 4, "name": "商务二部", "functioning": "business" },
+    { "id": 5, "name": "商务三部", "functioning": "business" },
+    { "id": 6, "name": "商务二部一组", "functioning": "business" },
+    { "id": 7, "name": "商务二部二组", "functioning": "business" },
+    { "id": 8, "name": "运营部", "functioning": "operation" },
+    { "id": 9, "name": "运营一部", "functioning": "operation" },
+    { "id": 10, "name": "运营一部一组", "functioning": "operation" },
+    { "id": 11, "name": "运营一部二组", "functioning": "operation" },
+    { "id": 12, "name": "运营二部", "functioning": "operation" },
+    { "id": 13, "name": "运营三部", "functioning": "operation" }
+  ],
+  "users": [
+    { "id": 1, "name": "陈志强", "joined": "2016-03-28", "department_id": 1, "department_name": "行政部", "email": "chenzq@web.com", "mobile": "13987276354", "state": "inservice", "roles": ["管理员"], "role_ids": [1] },
+    { "id": 2, "name": "高家亮", "joined": "2017-03-27", "department_id": 1, "department_name": "行政部", "email": "gaojl@web.com", "mobile": "18368764255", "state": "inservice", "roles": ["管理员"], "role_ids": [1] },
+    { "id": 3, "name": "张美", "joined": "2017-02-13", "department_id": 8, "department_name": "运营部", "email": "zhangm@web.com", "mobile": "13389431263", "state": "inservice", "roles": ["运营总监", "商务组员"], "role_ids": [3, 4] },
+    { "id": 4, "name": "许伟琦", "joined": "2017-10-10", "department_id": 2, "department_name": "商务部", "email": "xuwq@web.com", "mobile": "13758272989", "state": "inservice", "roles": ["商务总监"], "role_ids": [2] },
+    { "id": 5, "name": "杨慧秀", "joined": "2017-04-07", "department_id": 3, "department_name": "商务一部", "email": "yanghx@web.com", "mobile": "13645801979", "state": "suspended", "roles": ["商务组员"], "role_ids": [4] },
+    { "id": 6, "name": "丁欣芮", "joined": "2016-12-08", "department_id": 4, "department_name": "商务二部", "email": "dingxr@web.com", "mobile": "15154065074", "state": "inservice", "roles": ["商务组员", "财务"], "role_ids": [4, 6] },
+    { "id": 7, "name": "吴惠娟", "joined": "2018-03-07", "department_id": 5, "department_name": "商务三部", "email": "wuhj@web.com", "mobile": "13167080301", "state": "inservice", "roles": ["商务组员"], "role_ids": [4] },
+    { "id": 8, "name": "周琴", "joined": "2018-05-21", "department_id": 9, "department_name": "运营一部", "email": "zhouq@web.com", "mobile": "15968105134", "state": "inservice", "roles": ["运营组员"], "role_ids": [5] },
+    { "id": 9, "name": "陈天宝", "joined": "2018-08-26", "department_id": 12, "department_name": "运营二部", "email": "chentb@web.com", "mobile": "15157526752", "state": "inservice", "roles": ["运营组员"], "role_ids": [5] },
+    { "id": 10, "name": "潘明泽", "joined": "2018-11-12", "department_id": 13, "department_name": "运营三部", "email": "panmz@web.com", "mobile": "17808955102", "state": "inservice", "roles": ["运营组员"], "role_ids": [5] },
+    { "id": 11, "name": "叶道领", "joined": "2019-02-21", "department_id": 6, "department_name": "商务二部一组", "email": "yedl@web.com", "mobile": "13588202472", "state": "inservice", "roles": ["商务组员"], "role_ids": [4] },
+    { "id": 12, "name": "王佳文", "joined": "2019-01-02", "department_id": 7, "department_name": "商务二部二组", "email": "wangjw@web.com", "mobile": "18694225422", "state": "inservice", "roles": ["商务组员"], "role_ids": [4] },
+    { "id": 13, "name": "左秋英", "joined": "2019-02-28", "department_id": 10, "department_name": "运营一部一组", "email": "zhuoqy@web.com", "mobile": "15336064556", "state": "suspended", "roles": ["运营组员"], "role_ids": [5] },
+    { "id": 14, "name": "蒋宇强", "joined": "2019-03-06", "department_id": 11, "department_name": "运营一部二组", "email": "jiangyq@web.com", "mobile": "18267622767", "state": "inservice", "roles": ["运营组员"], "role_ids": [5] },
+    { "id": 15, "name": "魏树文", "joined": "2019-03-15", "department_id": 6, "department_name": "商务二部一组", "email": "weisw@web.com", "mobile": "18597287971", "state": "inservice", "roles": ["商务组员"], "role_ids": [4] },
+    { "id": 16, "name": "叶家启", "joined": "2019-04-05", "department_id": 7, "department_name": "商务二部二组", "email": "yejq@web.com", "mobile": "18296358406", "state": "inservice", "roles": ["商务组员"], "role_ids": [4] },
+    { "id": 17, "name": "林子浩", "joined": "2019-04-12", "department_id": 10, "department_name": "运营一部一组", "email": "linzh@web.com", "mobile": "13732856479", "state": "inservice", "roles": ["运营组员"], "role_ids": [5] },
+    { "id": 18, "name": "石亚利", "joined": "2019-04-19", "department_id": 11, "department_name": "运营一部二组", "email": "shiyl@web.com", "mobile": "13777386876", "state": "inservice", "roles": ["运营组员"], "role_ids": [5] },
+    { "id": 19, "name": "孙兴民", "joined": "2018-03-07", "department_id": 11, "department_name": "运营一部二组", "email": "sunxm@web.com", "mobile": "13588095675", "state": "inservice", "roles": ["运营组员"], "role_ids": [5] },
+    { "id": 20, "name": "汪素娟", "joined": "2018-03-27", "department_id": 14, "department_name": "财务部", "email": "wangsj@web.com", "mobile": "15158840985", "state": "inservice", "roles": ["财务"], "role_ids": [6] },
+    { "id": 21, "name": "俞佳颖", "joined": "2018-03-05", "department_id": 14, "department_name": "财务部", "email": "yujy@web.com", "mobile": "15968107134", "state": "inservice", "roles": ["财务", "运营组员"], "role_ids": [5, 6] },
+    { "id": 22, "name": "刘文斌", "joined": "2016-12-01", "department_id": 10, "department_name": "运营一部一组", "email": "liuwb@web.com", "mobile": "18357493895", "state": "inservice", "roles": ["运营组员"], "role_ids": [5] },
+    { "id": 23, "name": "邵阳", "joined": "2017-08-30", "department_id": 10, "department_name": "运营一部一组", "email": "shaoy@web.com", "mobile": "13588532475", "state": "inservice", "roles": ["运营组员"], "role_ids": [5] },
+    { "id": 24, "name": "赵琦", "joined": "2017-10-10", "department_id": 10, "department_name": "运营一部一组", "email": "zhaoq@web.com", "mobile": "13645009979", "state": "inservice", "roles": ["运营组员"], "role_ids": [5] }
   ]
 }

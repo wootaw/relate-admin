@@ -95,7 +95,31 @@ export default {
   background-image: linear-gradient(120deg, $blue_color_lt 0%, $grey_color 100%);
   // background-image: linear-gradient(120deg, $grey_color_lt 0%, $grey_color_lter 100%);
   position: absolute;
+  z-index: -1;
   width: 100%;
   box-shadow: 0 1px 6px 0 rgba(32,33,36,0.28);
+  overflow: hidden;
+  &::before, &::after {
+    content: "";
+    position: absolute;
+    height: 200px;
+  }
+  &::before {
+    border-radius: 45%;
+    top: 50px;
+    left: -70px;
+    width: 130%;
+    background-image: linear-gradient(120deg, $blue_color 0%, $grey_color 100%);
+    transform: rotate(10deg);
+    z-index: 2;
+  }
+  &::after {
+    border-radius: 47%;
+    top: 60px;
+    width: 150%;
+    background-color: rgba(0, 0, 0, 0.05);
+    transform: rotate(10deg);
+    z-index: 1;
+  }
 }
 </style>

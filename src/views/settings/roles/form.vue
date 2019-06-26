@@ -91,6 +91,12 @@ export default {
     }
   },
 
+  watch: {
+    actions (nv, ov) {
+      this.form.actions = nv.filter((v) => /^\d+$/.test(v))
+    }
+  },
+
   methods: {
     async initResources () {
       const res = await this.axios.get(`api/resources`)

@@ -34,7 +34,7 @@ import {
     ButtonGroup,
     Table,
     TableColumn,
-    // DatePicker,
+    DatePicker,
     // TimeSelect,
     // TimePicker,
     // Popover,
@@ -47,7 +47,7 @@ import {
     // TabPane,
     Tag,
     // Tree,
-    // Alert,
+    Alert,
     // Slider,
     // Icon,
     Row,
@@ -63,7 +63,7 @@ import {
     // CarouselItem,
     Collapse,
     CollapseItem,
-    // Cascader,
+    Cascader,
     // ColorPicker,
     // Transfer,
     Container,
@@ -87,8 +87,8 @@ import {
     // CollapseTransition
 } from 'element-ui'
 
-import '@/styles/index.scss'
 import '@/styles/element-ui-index.scss'
+import '@/styles/index.scss'
 
 Vue.use(Pagination);
 Vue.use(Dialog)
@@ -116,7 +116,7 @@ Vue.use(Button)
 Vue.use(ButtonGroup)
 Vue.use(Table)
 Vue.use(TableColumn)
-// Vue.use(DatePicker);
+Vue.use(DatePicker);
 // Vue.use(TimeSelect);
 // Vue.use(TimePicker);
 // Vue.use(Popover);
@@ -129,7 +129,7 @@ Vue.use(FormItem)
 // Vue.use(TabPane);
 Vue.use(Tag)
 // Vue.use(Tree);
-// Vue.use(Alert);
+Vue.use(Alert);
 // Vue.use(Slider);
 // Vue.use(Icon);
 Vue.use(Row)
@@ -145,7 +145,7 @@ Vue.use(Card)
 // Vue.use(CarouselItem);
 Vue.use(Collapse)
 Vue.use(CollapseItem)
-// Vue.use(Cascader);
+Vue.use(Cascader);
 // Vue.use(ColorPicker);
 // Vue.use(Transfer);
 Vue.use(Container)
