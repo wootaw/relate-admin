@@ -2,7 +2,15 @@
   div(class="app-users")
     sticky(:height="28" :top="15" :fixed-at="50")
       el-row(class="ta-r")
-        el-col(:span="24" class="ph-20")
+        el-col(:span="12" class="ph-20")
+          el-input(placeholder="请输入内容" size="mini")
+            el-button(
+              round
+              type="primary"
+              slot="append"
+              icon="el-icon-search"
+            )
+        el-col(:span="12" class="ph-20")
           router-link(:to="{ path: 'users/add' }")
             el-button(
               round
@@ -71,12 +79,37 @@ export default {
     }
   },
 
+  computed: {
+    routeQuery () {
+      const q = this.$route.query
+      return q === undefined ? null : [q.state, q.did]
+    }
+  },
+
+  watch: {
+    async routeQuery (nv, ov) {
+      const q = { '_page': 1 }
+      if (nv !== null) {
+        if (nv[0] === undefined) {
+          delete q['state']
+        } else {
+          q['state'] = nv[0]
+        }
+        if (nv[1] === undefined) {
+          delete q['department_id']
+        } else {
+          q['department_id'] = nv[1]
+        }
+        await this.getList(q)
+      }
+    }
+  },
+
   methods: {
-    getList () {
-      const q = { "_page": this.query.page, "_limit": this.query.limit }
-      this.axios.get('api/users', { params: q }).then((res) => {
-        this.rows = res.data
-      })
+    async getList (params = {}) {
+      const q = { '_page': this.query.page, '_limit': this.query.limit, ...params }
+      const res = await this.axios.get('api/users', { params: q })
+      this.rows = res.data
     },
 
     suspendedRow ({ row, rowIndex }) {
@@ -88,8 +121,8 @@ export default {
     }
   },
 
-  mounted () {
-    this.getList()
+  async mounted () {
+    await this.getList()
   }
 }
 </script>
