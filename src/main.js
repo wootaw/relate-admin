@@ -37,7 +37,7 @@ import {
     DatePicker,
     // TimeSelect,
     // TimePicker,
-    // Popover,
+    Popover,
     Tooltip,
     Breadcrumb,
     BreadcrumbItem,
@@ -54,7 +54,7 @@ import {
     Col,
     // Upload,
     // Progress,
-    // Badge,
+    Badge,
     Card,
     // Rate,
     // Steps,
@@ -119,7 +119,7 @@ Vue.use(TableColumn)
 Vue.use(DatePicker);
 // Vue.use(TimeSelect);
 // Vue.use(TimePicker);
-// Vue.use(Popover);
+Vue.use(Popover);
 Vue.use(Tooltip)
 Vue.use(Breadcrumb)
 Vue.use(BreadcrumbItem)
@@ -136,7 +136,7 @@ Vue.use(Row)
 Vue.use(Col)
 // Vue.use(Upload);
 // Vue.use(Progress);
-// Vue.use(Badge);
+Vue.use(Badge);
 Vue.use(Card)
 // Vue.use(Rate);
 // Vue.use(Steps);

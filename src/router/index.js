@@ -23,7 +23,17 @@ const router = new Router({
       children: [{
         path: 'leads',
         name: 'leads',
-        component: () => import('@/views/customers/Leads')
+        meta: { title: '线索' },
+        component: () => import('@/views/customers/leads/index.vue'),
+        children: [{
+          path: 'add',
+          name: 'leads-add',
+          meta: { title: '新增', pane: 'lead-form' },
+        }, {
+          path: ':id/edit',
+          name: 'leads-edit',
+          meta: { title: '编辑', pane: 'lead-form' },
+        }]
       }, {
         path: 'signeds',
         name: 'signeds',

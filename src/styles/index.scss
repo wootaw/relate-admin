@@ -14,6 +14,9 @@
 .m-20 {
   margin: 20px;
 }
+.ml-5 {
+  margin-left: 5px;
+}
 .mt-15 {
   margin-top: 15px;
 }
@@ -51,6 +54,9 @@
 }
 .pl-15 {
   padding-left: 15px;
+}
+.tc-o {
+  color: $orange_color_dk;
 }
 // .pr-15 {
 //   padding-right: 15px;
@@ -142,4 +148,15 @@
     }
     
   }
+}
+.app-help-item {
+  font-size: 13px;
+}
+.option-label {
+  font-weight: bold;
+  color: $blue_color_dker;
+}
+.option-desc {
+  font-size: 13px;
+  color: $grey_color_dk;
 }

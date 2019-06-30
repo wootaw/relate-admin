@@ -11,27 +11,32 @@
               icon="el-icon-search"
             )
         el-col(:span="12" class="ph-20")
-          router-link(:to="{ path: 'users/add' }")
+          router-link(:to="{ path: 'leads/add' }")
             el-button(
               round
               type="primary"
               size="mini"
               icon="el-icon-plus"
-            ) 添加员工
+            ) 添加线索
     el-card(:body-style="{ padding: '0px' }" shadow="never" class="m-20")
       el-table(
         row-key="id"
         :data="rows"
-        :row-class-name="suspendedRow"
       )
         el-table-column(label="ID" type="index" prop="id")
-        el-table-column(prop="name" label="姓名")
-        el-table-column(prop="mobile" label="手机")
-        el-table-column(prop="department_name" label="所属部门")
-        el-table-column(prop="joined" label="入职日期")
-        el-table-column(label="角色")
+        el-table-column(prop="name" label="名称")
+        el-table-column(label="来源")
           template(slot-scope="scope")
-            el-tag(class="mr-5" size="small" v-for="role of scope.row.roles") {{role}}
+            el-tag(
+              class="mr-5"
+              effect="dark"
+              size="small"
+              :type="['', 'info', 'warning', 'success'][scope.row.source]"
+            ) {{scope.row.source_name}}
+        el-table-column(prop="industry_name" label="行业")
+        el-table-column(prop="level" label="意向程度")
+        el-table-column(prop="contact" label="联系人")
+        el-table-column(prop="mobile" label="电话")
         el-table-column(label="操作" fixed="right" width="120" align="center")
           template(slot-scope="scope")
             el-button-group(class="app-buttons-plain")
@@ -40,14 +45,14 @@
                   size="mini"
                   type="primary"
                   icon="el-icon-edit"
-                  @click="$router.push({ name: 'users-edit', params: { id: scope.row.id }})"
+                  @click="$router.push({ name: 'leads-edit', params: { id: scope.row.id }})"
                 )
-              el-tooltip(effect="dark" :open-delay="800" placement="top" :content="{ 'inservice': '禁用', 'suspended': '解禁' }[scope.row.state]")
+              el-tooltip(effect="dark" :open-delay="800" placement="top" content="放弃")
                 el-button(
                   size="mini"
-                  :type="{ 'inservice': 'danger', 'suspended': 'success' }[scope.row.state]"
-                  :icon="{ 'inservice': 'el-icon-lock', 'suspended': 'el-icon-unlock' }[scope.row.state]"
-                  @click="toggleState(scope.$index, scope.row)"
+                  type="danger"
+                  icon="el-icon-delete"
+                  @click="confirmDelete(scope.$index, scope.row)"
                 )
       pagination(
         layout="total, sizes, prev, pager, next, jumper"
@@ -85,28 +90,21 @@ export default {
   watch: {
     async routeQuery (nv, ov) {
       if (nv !== null) {
-        const q = this.updateQuery(['state', 'department_id'], nv)
+        const q = this.updateQuery(['source', 'industry', 'level'], nv)
         await this.getList(q)
       }
     }
   },
 
   methods: {
-    queryValues: (q) => [q.state, q.did],
+    queryValues: (q) => [q.source, q.industry, q.level],
 
     async getList (params = {}) {
       const q = { '_page': this.query.page, '_limit': this.query.limit, ...params }
-      const res = await this.axios.get('api/users', { params: q })
+      const res = await this.axios.get('api/leads', { params: q })
       this.rows = res.data
     },
 
-    suspendedRow ({ row, rowIndex }) {
-      return row.state === 'suspended' ? 'warning-row' : '';
-    },
-
-    toggleState (idx, row) {
-      row.state = row.state === 'suspended' ? 'inservice' : 'suspended'
-    }
   },
 
   async mounted () {
@@ -117,8 +115,4 @@ export default {
 
 <style lang="scss">
 @import "~@/styles/variables.scss";
-.el-table .warning-row {
-  background-color: $orange_color_lt;
-  color: $orange_color_dk;
-}
 </style>

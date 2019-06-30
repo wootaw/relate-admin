@@ -40,8 +40,8 @@ export default {
 @import "~@/styles/mixin.scss";
 .app-filter-box {
   .el-card__header {
-    background-color: $blue_color;
-    background-image: linear-gradient(120deg, $blue_color_dk 0%, $grey_color 100%);
+    background-color: $blue_color_lt;
+    // background-image: linear-gradient(120deg, $blue_color_dk 0%, $grey_color 100%);
     padding: 10px;
     h5 {
       font-size: 1em;

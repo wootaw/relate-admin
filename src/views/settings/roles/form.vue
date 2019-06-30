@@ -15,8 +15,8 @@
           icon="el-icon-error"
           @click="$router.push({ name: 'roles' })"
         ) 取消
-    div(class="app-dialog-wrapper")
-      el-form(:model="form" :rules="rules" ref="deptForm" label-width="100px")
+    div(class="app-dialog-wrapper app-role-form")
+      el-form(:model="form" :rules="rules" ref="roleForm" label-width="100px")
         el-row
           el-col(:span="10")
             el-form-item(label="角色名称" prop="name")
@@ -24,31 +24,32 @@
           el-col(:span="14")
             el-form-item(label="备注" prop="remark")
               el-input(v-model="form.remark" size="small")
-        div
+        div(class="app-resources")
           //- el-row
           //-   el-col
           //-     label(style="width: 100px") 权限
           el-checkbox-group(v-model="actions")
             template(v-for="item of items")
-              el-divider(content-position="left") 
-                i(:class="[item.icon, 'mr-10', 'txt-blue-dk']")
-                span {{item.title}}
-              el-row(class="app-resource-row" v-for="res of item.resources")
-                el-col(:span="4")
-                  el-checkbox(
-                    :label="res.name"
-                    :indeterminate="res.indeterminate"
-                    @change="onResourceAllChange"
-                  )
-                    h4(class="m-0") {{res.title}}
-                el-col(:span="20")
-                  el-checkbox(
-                    border
-                    size="mini"
-                    :label="action.id"
-                    v-for="action of res.actions"
-                    @change="onActionChange"
-                  ) {{action.name}}
+              el-card(class="mb-15" shadow="never")
+                div(slot="header" class="clearfix")
+                  i(:class="[item.icon, 'mr-10', 'txt-blue-dk']")
+                  span {{item.title}}
+                el-row(class="app-resource-row" v-for="res of item.resources")
+                  el-col(:span="4")
+                    el-checkbox(
+                      :label="res.name"
+                      :indeterminate="res.indeterminate"
+                      @change="onResourceAllChange"
+                    )
+                      h4(class="m-0") {{res.title}}
+                  el-col(:span="20")
+                    el-checkbox(
+                      border
+                      size="mini"
+                      :label="action.id"
+                      v-for="action of res.actions"
+                      @change="onActionChange"
+                    ) {{action.name}}
 
 </template>
 
@@ -170,6 +171,15 @@ export default {
 
 <style lang="scss">
 @import "~@/styles/variables.scss";
+.app-resources {
+  .el-card {
+    font-size: 14px;
+    background-color: $grey_color_lter!important;
+    .el-card__header, .el-card__body {
+      padding: 10px;
+    }
+  }
+}
 .app-resource-row {
   margin: 0 0 5px 0;
   .el-col {

@@ -98,5 +98,54 @@
     { "id": 22, "name": "刘文斌", "joined": "2016-12-01", "department_id": 10, "department_name": "运营一部一组", "email": "liuwb@web.com", "mobile": "18357493895", "state": "inservice", "roles": ["运营组员"], "role_ids": [5] },
     { "id": 23, "name": "邵阳", "joined": "2017-08-30", "department_id": 10, "department_name": "运营一部一组", "email": "shaoy@web.com", "mobile": "13588532475", "state": "inservice", "roles": ["运营组员"], "role_ids": [5] },
     { "id": 24, "name": "赵琦", "joined": "2017-10-10", "department_id": 10, "department_name": "运营一部一组", "email": "zhaoq@web.com", "mobile": "13645009979", "state": "inservice", "roles": ["运营组员"], "role_ids": [5] }
+  ],
+  "industries_tree": [
+    {
+      "id": 1, "name": "直营电商", "children": [
+        { "id": 2, "name": "服饰" },
+        { "id": 3, "name": "鞋帽" },
+        { "id": 4, "name": "食品酒水" },
+        { "id": 5, "name": "数码家电" },
+        { "id": 6, "name": "日用品" },
+        { "id": 7, "name": "汽车用品" },
+        { "id": 8, "name": "化妆品" },
+        { "id": 9, "name": "电商其他" }
+      ]
+    }, { 
+      "id": 10, "name": "其他行业", "children": [
+        { "id": 11, "name": "金融" },
+        { "id": 12, "name": "游戏" },
+        { "id": 13, "name": "教育" },
+        { "id": 14, "name": "APP" },
+        { "id": 15, "name": "自媒体" },
+        { "id": 16, "name": "网服其他" }
+      ]
+    }
+  ],
+  "leads": [
+    { "id": 1, "name": "欧莲娜服饰", "industry": 2, "industry_name": "服饰", "source": 1, "source_name": "商务", "level": "A", "mobile": "13987276354", "contact": "涂渁沝", "roles": ["管理员"], "role_ids": [1] },
+    { "id": 2, "name": "ABC商贸", "industry": 9, "industry_name": "电商其他", "source": 1, "source_name": "商务", "level": "A+", "mobile": "18368764255", "contact": "欧阳夏雪", "roles": ["管理员"], "role_ids": [1] },
+    { "id": 3, "name": "夏隆百货", "industry": 6, "industry_name": "日用品", "source": 2, "source_name": "公司", "level": "A+", "mobile": "13389431263", "contact": "夏隆斌", "roles": ["运营总监", "商务组员"], "role_ids": [3, 4] },
+    { "id": 4, "name": "天行健生物", "industry": 8, "industry_name": "化妆品", "source": 2, "source_name": "公司", "level": "A+", "mobile": "13758272989", "contact": "余国栋", "roles": ["商务总监"], "role_ids": [2] },
+    { "id": 5, "name": "鲜速达果品", "industry": 4, "industry_name": "食品酒水", "source": 3, "source_name": "渠道", "level": "A", "mobile": "13645801979", "contact": "章天临", "roles": ["商务组员"], "role_ids": [4] },
+    { "id": 6, "name": "腾飞雨棚", "industry": 6, "industry_name": "日用品", "source": 2, "source_name": "公司", "level": "A", "mobile": "15154065074", "contact": "吉普", "roles": ["商务组员", "财务"], "role_ids": [4, 6] },
+    { "id": 7, "name": "华冠机器人", "industry": 5, "industry_name": "数码家电", "source": 1, "source_name": "商务", "level": "A+", "mobile": "13167080301", "contact": "李四", "roles": ["商务组员"], "role_ids": [4] },
+    { "id": 8, "name": "健清时代生物", "industry": 8, "industry_name": "化妆品", "source": 3, "source_name": "渠道", "level": "B", "mobile": "15968105134", "contact": "张三", "roles": ["运营组员"], "role_ids": [5] },
+    { "id": 9, "name": "丰隆食品", "industry": 4, "industry_name": "食品酒水", "source": 3, "source_name": "渠道", "level": "C", "mobile": "15157526752", "contact": "蒙清源", "roles": ["运营组员"], "role_ids": [5] },
+    { "id": 10, "name": "鼎顺贸易", "industry": 9, "industry_name": "电商其他", "source": 3, "source_name": "渠道", "level": "B", "mobile": "17808955102", "contact": "秦明达", "roles": ["运营组员"], "role_ids": [5] },
+    { "id": 11, "name": "木熙服装", "industry": 2, "industry_name": "服饰", "source": 3, "source_name": "渠道", "level": "B", "mobile": "13588202472", "contact": "郑健清", "roles": ["商务组员"], "role_ids": [4] },
+    { "id": 12, "name": "晶丝燕尔贸易", "industry": 16, "industry_name": "网服其他", "source": 1, "source_name": "商务", "level": "A", "mobile": "18694225422", "contact": "冯国庆", "roles": ["商务组员"], "role_ids": [4] },
+    { "id": 13, "name": "草原五黑羊", "industry": 4, "industry_name": "食品酒水", "source": 2, "source_name": "公司", "level": "A+", "mobile": "15336064556", "contact": "王忠", "roles": ["运营组员"], "role_ids": [5] },
+    { "id": 14, "name": "金茧科技", "industry": 13, "industry_name": "教育", "source": 1, "source_name": "商务", "level": "D", "mobile": "18267622767", "contact": "赵六灵", "roles": ["运营组员"], "role_ids": [5] },
+    { "id": 15, "name": "庞鸿科技", "industry": 12, "industry_name": "游戏", "source": 3, "source_name": "渠道", "level": "B", "mobile": "18597287971", "contact": "鲍坚", "roles": ["商务组员"], "role_ids": [4] },
+    { "id": 16, "name": "嘉骅建材", "industry": 6, "industry_name": "日用品", "source": 1, "source_name": "商务", "level": "B", "mobile": "18296358406", "contact": "沈颖祯", "roles": ["商务组员"], "role_ids": [4] },
+    { "id": 17, "name": "吉速果品", "industry": 4, "industry_name": "食品酒水", "source": 2, "source_name": "公司", "level": "A", "mobile": "13732856479", "contact": "黄士超", "roles": ["运营组员"], "role_ids": [5] },
+    { "id": 18, "name": "兴裕文化", "industry": 15, "industry_name": "自媒体", "source": 1, "source_name": "商务", "level": "A", "mobile": "13777386876", "contact": "王佳芮", "roles": ["运营组员"], "role_ids": [5] },
+    { "id": 19, "name": "宙飒实业", "industry": 7, "industry_name": "汽车用品", "source": 1, "source_name": "商务", "level": "D", "mobile": "13588095675", "contact": "汤彬杰", "roles": ["运营组员"], "role_ids": [5] },
+    { "id": 20, "name": "暮尚妮服饰", "industry": 3, "industry_name": "鞋帽", "source": 2, "source_name": "公司", "level": "A+", "mobile": "15158840985", "contact": "汪源峰", "roles": ["财务"], "role_ids": [6] },
+    { "id": 21, "name": "冠捷表业", "industry": 5, "industry_name": "数码家电", "source": 2, "source_name": "公司", "level": "A+", "mobile": "15968107134", "contact": "陈晓慧", "roles": ["财务", "运营组员"], "role_ids": [5, 6] },
+    { "id": 22, "name": "灵鸽网络", "industry": 11, "industry_name": "金融", "source": 2, "source_name": "公司", "level": "C", "mobile": "18357493895", "contact": "佘新菊", "roles": ["运营组员"], "role_ids": [5] },
+    { "id": 23, "name": "汇古塑胶", "industry": 6, "industry_name": "日用品", "source": 2, "source_name": "公司", "level": "A", "mobile": "13588532475", "contact": "伍耀辉", "roles": ["运营组员"], "role_ids": [5] },
+    { "id": 24, "name": "驯鹿人户外用品", "industry": 6, "industry_name": "日用品", "source": 2, "source_name": "公司", "level": "C", "mobile": "13645009979", "contact": "黄兴民", "roles": ["运营组员"], "role_ids": [5] }
   ]
 }
