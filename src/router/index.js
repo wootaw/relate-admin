@@ -37,7 +37,46 @@ const router = new Router({
       }, {
         path: 'signeds',
         name: 'signeds',
-        component: () => import('@/views/customers/Signeds')
+        meta: { title: '签单客户' },
+        component: () => import('@/views/customers/signeds/index.vue'),
+        children: [{
+          path: ':id',
+          name: 'signeds-detail',
+          meta: { title: '详情' },
+          children: [{
+            path: 'owners',
+            name: 'signeds-owners',
+            meta: { title: '商务负责人' },
+          }, {
+            path: 'contacts',
+            name: 'signeds-contacts',
+            meta: { title: '联系人' },
+          }, {
+            path: 'accounts',
+            name: 'signeds-accounts',
+            meta: { title: '媒体账号' },
+          }, {
+            path: 'contracts',
+            name: 'signeds-contracts',
+            meta: { title: '合同' },
+          }, {
+            path: 'imprest',
+            name: 'signeds-imprest',
+            meta: { title: '备款' },
+          }, {
+            path: 'chargeds',
+            name: 'signeds-chargeds',
+            meta: { title: '充值' },
+          }, {
+            path: 'consumeds',
+            name: 'signeds-consumeds',
+            meta: { title: '消耗' },
+          }, {
+            path: 'invoices',
+            name: 'signeds-invoices',
+            meta: { title: '发票' },
+          }]
+        }]
       }, {
         path: 'openeds',
         name: 'openeds',

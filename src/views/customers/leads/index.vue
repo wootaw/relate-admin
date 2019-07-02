@@ -1,5 +1,5 @@
 <template lang="pug">
-  div(class="app-users")
+  div(class="app-leads")
     sticky(:height="28" :top="15" :fixed-at="50")
       el-row(class="ta-r")
         el-col(:span="12" class="ph-20")
@@ -31,13 +31,13 @@
               class="mr-5"
               effect="dark"
               size="small"
-              :type="['', 'info', 'warning', 'success'][scope.row.source]"
+              :type="['', 'primary', 'warning', 'success'][scope.row.source]"
             ) {{scope.row.source_name}}
         el-table-column(prop="industry_name" label="行业")
         el-table-column(prop="level" label="意向程度")
-        el-table-column(prop="contact" label="联系人")
-        el-table-column(prop="mobile" label="电话")
-        el-table-column(label="操作" fixed="right" width="120" align="center")
+        el-table-column(prop="contact" label="联系人" width="80")
+        el-table-column(prop="mobile" label="电话" width="110")
+        el-table-column(label="操作" fixed="right" width="80" align="center")
           template(slot-scope="scope")
             el-button-group(class="app-buttons-plain")
               el-tooltip(effect="dark" :open-delay="800" placement="top" content="编辑")
